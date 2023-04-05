@@ -1,25 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-
+import AppModule from './Components/AppModule';
+import { Line, UserTypeContainer } from './Components/Global.Style';
+import Header from './Components/Header/Header';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
+  const [userType1,] = useState('Broker');
+  const [userType2,] = useState('User');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={
+            <>
+              <div >
+                <UserTypeContainer>
+                  {userType1?.toUpperCase()} OVERVIEW <Line />
+                </UserTypeContainer>
+              </div>
+              <div className='container'>
+                <AppModule />
+              </div>
+            </>
+          } />
+          <Route path="user" element={
+            <>
+              <div >
+                <UserTypeContainer>
+                  {userType2?.toUpperCase()} OVERVIEW <Line />
+                </UserTypeContainer>
+              </div>
+              <div className='container'>
+
+              </div>
+            </>
+          } />
+
+
+        </Routes>
+      </BrowserRouter>
+    </>
+
   );
 }
 
