@@ -4,6 +4,7 @@ import AppModule from './Components/AppModule';
 import { Line, UserTypeContainer } from './Components/Global.Style';
 import Header from './Components/Header/Header';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import UserModule from './Components/UserModule';
 function App() {
   const [userType1,] = useState('Broker');
   const [userType2,] = useState('User');
@@ -33,7 +34,7 @@ function App() {
                 </UserTypeContainer>
               </div>
               <div className='container'>
-
+                <UserModule/>
               </div>
             </>
           } />

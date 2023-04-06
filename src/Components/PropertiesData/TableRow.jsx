@@ -17,7 +17,7 @@ const TableRow = ({ propertiesDetails }) => {
             </td>
             <td>
                 <div>
-                    <p> AccuracyRate: {propertiesDetails.attributes.AccuracyRate}</p>
+                    <p>AccuracyRate: {propertiesDetails.attributes.AccuracyRate}</p>
                     <p>Category: {propertiesDetails.attributes.Category}</p>
                 </div>
             </td>
