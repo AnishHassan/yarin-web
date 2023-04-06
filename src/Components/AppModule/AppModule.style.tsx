@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export const MenuTabsContainer = styled.div`
 display: grid;
-grid-template-columns: 23% 23% 23% 23%;
+grid-template-columns: 22% 22% 22% 22%;
 width : 100%;
 gap : 47px;
 
