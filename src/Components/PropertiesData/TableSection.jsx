@@ -9,39 +9,41 @@ const TableSection = ({ propertiesDetails, index }) => {
 
     return (
         <>
-            <tbody>
-                <tr>
-                    <td>
-                        
-                   </td>
-                    <td>
-                        xxxxxx
-                    </td>
-                    <td>
-                        xxxxxxxxxxx
-                    </td>
-                    <td>
-                        xxxxxxxxx
-                    </td>
-                    <td>
-                        xxxxxxxxxx
-                    </td>
-                    <td>
-                        xxxxxxxxx
-                    </td>
-                    <td>
-                        xxxxxxxxxxx
-                    </td>
-                    <td>
-                        xxxxxxxx
-                    </td>
-                    <td className='button-td'>
-                        <ExpandableButton isOpen={isOpen} toggle={toggle} />
-                    </td>
+          {isOpen ==false &&
+                  <tr style={{background:"#D9D9D9"}}>
+                  <td >
+                  {propertiesDetails.id}. 
+                 </td>
+                  <td>
+                      xxxxxx
+                  </td>
+                  <td>
+                      xxxxxxxxxxx
+                  </td>
+                  <td>
+                      xxxxxxxxx
+                  </td>
+                  <td>
+                      xxxxxxxxxx
+                  </td>
+                  <td>
+                      xxxxxxxxx
+                  </td>
+                  <td>
+                      xxxxxxxxxxx
+                  </td>
+                  <td>
+                      xxxxxxxx
+                  </td>
+                  <td className='button-td'>
+                      <ExpandableButton isOpen={isOpen} toggle={toggle} />
+                  </td>
 
-                </tr>
-                {isOpen && <TableRow propertiesDetails={propertiesDetails} />}
-            </tbody>
+              </tr>
+                }
+              
+                {isOpen && <TableRow propertiesDetails={propertiesDetails} isOpen={isOpen} toggle={toggle}/>}
+          
 
         </>
     );
