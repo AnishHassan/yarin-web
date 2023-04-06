@@ -7,14 +7,15 @@ import './table.css'
 export default function TablePropertiesData() {
     const [datas, setData] = useState(data);
 
-
+console.log(datas)
 
     return (
         <>
+      
             <table>
                 <thead>
-                    <td>
-                    </td>
+               <tr>
+               <th></th>
                     <th>CITY</th>
                     <th>PHONE NUMBER</th>
                     <th>SOURCE</th>
@@ -22,17 +23,18 @@ export default function TablePropertiesData() {
                     <th>CASE ID</th>
                     <th>LOCATION</th>
                     <th>MATCHES%</th>
-                    <td>
+                    <th>
 
-                    </td>
+                    </th>
+               </tr>
                 </thead>
-            </table>
-            <table>
-              
-                {datas.map((propertiesDetails, index) => (
+        <tbody>
+        {datas.map((propertiesDetails, index) => (
                     <TableSection propertiesDetails={propertiesDetails} index={index}/>
                 ))}
-        </table>
+            </tbody>        
+            </table>
+        
         
         </>
     );

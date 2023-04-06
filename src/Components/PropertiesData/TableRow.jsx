@@ -1,15 +1,15 @@
 import React from "react";
-
-const TableRow = ({ propertiesDetails }) => {
+import ExpandableButton from './ExpandableButton';
+const TableRow = ({ propertiesDetails,isOpen,toggle }) => {
     return (
-        <tr>
+        <tr style={{background:"rgb(27, 26, 58)"}} className="active">
             <td>
                 <b>{propertiesDetails.id}.</b> 
             </td>
             <td>
                 {propertiesDetails.city}
             </td>
-            <td>
+            <td style={{width:"13rem"}}>
                 {propertiesDetails.phoneNumber}
             </td>
             <td>
@@ -17,7 +17,7 @@ const TableRow = ({ propertiesDetails }) => {
             </td>
             <td>
                 <div>
-                    <p>AccuracyRate: {propertiesDetails.attributes.AccuracyRate}</p>
+                    <p style={{marginTop:"0px"}}> AccuracyRate: {propertiesDetails.attributes.AccuracyRate}</p>
                     <p>Category: {propertiesDetails.attributes.Category}</p>
                 </div>
             </td>
@@ -31,11 +31,14 @@ const TableRow = ({ propertiesDetails }) => {
             <td>
                 {propertiesDetails.matches.map((item) => (
                     <div>
-                        <p>{item.name} - {item.referenceId}</p>
+                        <p style={{marginTop:"0px"}}>{item.name} - {item.referenceId}</p>
                         <p>{item.percentage} - {item.url}</p>
                     </div>
                 ))}
             </td>
+            <td className='button-td'>
+                      <ExpandableButton isOpen={isOpen} toggle={toggle} />
+                  </td>
         </tr>
     )
 }
