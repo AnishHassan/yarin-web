@@ -1,7 +1,4 @@
-import FormField from "../Form/FormField";
-import { PropertyFormValidationSchema } from "../Form/Validations";
 import { FormContainer, FormContainer2, MainFormContainer } from "./UserModule.style";
-import { useFormik } from 'formik';
 import { InputTextarea } from "primereact/inputtextarea";
 import { InputNumber } from 'primereact/inputnumber';
 import { FieldLabel } from "../Form/form.styles";
@@ -11,7 +8,7 @@ import { Chips } from "primereact/chips";
 import { useState } from "react";
 import { Button } from 'primereact/button';
 import FileUploadDrop from "../Form/FileUpload";
-
+import { InputText } from "primereact/inputtext";
 const UserModule = () => {
 
     const cities = [
@@ -19,56 +16,33 @@ const UserModule = () => {
         { name: 'Group 2', code: 'RM' }
     ];
     const [file, setFile] = useState();
-
     const [value, setValue] = useState([]);
-    const formik = useFormik({
-        initialValues: {
-            first_name: '',
-            last_name: '',
-            detail: '',
-            price: 0,
-            city: '',
-            address: '',
-            group: '',
-            tags: ''
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [detail, setDetail] = useState('');
+    const [price, setPrice] = useState('');
+    const [city, setCity] = useState('');
+    const [address, setAddress] = useState('');
+    const [group, setGroup] = useState('');
 
-        },
-        validationSchema: PropertyFormValidationSchema,
-
-        onSubmit: () => {
-            handleSubmit();
-        }
-    });
 
     const handleSubmit = () => {
-        console.log(formik.values)
+        console.log(value)
     };
 
 
     return (
         <>
-            <MainFormContainer onSubmit={formik.handleSubmit}>
+            <MainFormContainer onSubmit={handleSubmit}>
                 <FormContainer>
                     <div className="grid ">
                         <div className="col-6">
-                            <FormField
-                                label="First Name"
-                                name="first_name"
-                                errors={formik.errors}
-                                touched={formik.touched}
-                                value={formik.values?.first_name}
-                                onBlur={formik.handleBlur}
-                            />
+                            <FieldLabel>First Name</FieldLabel>
+                            <InputText value={firstName} onChange={(e) => setFirstName(e.target.value)} className="wide" />
                         </div>
                         <div className="col-6">
-                            <FormField
-                                label="Last Name"
-                                name="last_name"
-                                errors={formik.errors}
-                                touched={formik.touched}
-                                value={formik.values?.last_name}
-                                onBlur={formik.handleBlur}
-                            />
+                            <FieldLabel>Last Name</FieldLabel>
+                            <InputText value={lastName} onChange={(e) => setLastName(e.target.value)} className="wide" />
                         </div>
                     </div>
                     <div className="grid ">
@@ -76,14 +50,8 @@ const UserModule = () => {
                             <FieldLabel>Detail Subject</FieldLabel>
                             <InputTextarea
                                 className="wide"
-                                name="detail"
-                                errors={formik.errors}
-                                touched={formik.touched}
-                                value={formik.values?.detail}
-                                onBlur={formik.handleBlur}
+                                value={detail} onChange={(e) => setDetail(e.target.value)}
                                 rows={5} />
-
-
                         </div>
                     </div>
 
@@ -93,10 +61,8 @@ const UserModule = () => {
                             <div className="p-inputgroup flex-1">
                                 <span className="p-inputgroup-addon">$</span>
                                 <InputNumber placeholder="Price" name="price"
-                                    errors={formik.errors}
-                                    touched={formik.touched}
-                                    value={formik.values?.price}
-                                    onBlur={formik.handleBlur} />
+                                    value={price} onChange={(e) => setPrice(e.target.value)}
+                                />
                                 <span className="p-inputgroup-addon">.00</span>
                             </div>
                         </div>
@@ -105,27 +71,15 @@ const UserModule = () => {
 
                     <div className="grid mt-1">
                         <div className="col-12">
-                            <FormField
-                                label="City"
-                                name="city"
-                                errors={formik.errors}
-                                touched={formik.touched}
-                                value={formik.values?.city}
-                                onBlur={formik.handleBlur}
-                            />
+                            <FieldLabel>City</FieldLabel>
+                            <InputText value={city} onChange={(e) => setCity(e.target.value)} className="wide" />
                         </div>
                     </div>
 
                     <div className="grid">
                         <div className="col-12">
-                            <FormField
-                                label="Address"
-                                name="address"
-                                errors={formik.errors}
-                                touched={formik.touched}
-                                value={formik.values?.address}
-                                onBlur={formik.handleBlur}
-                            />
+                            <FieldLabel>Address</FieldLabel>
+                            <InputText value={address} onChange={(e) => setAddress(e.target.value)} className="wide" />
                         </div>
                     </div>
 
@@ -136,7 +90,6 @@ const UserModule = () => {
 
                 <FormContainer2>
                     <div className="col-12 mt-2">
-                        {file && <h4>{file.file_name || ''}</h4>}
                         <FileUploadDrop setFile={setFile} />
                     </div>
 
@@ -145,10 +98,8 @@ const UserModule = () => {
                             <FieldLabel>Choose Group</FieldLabel>
                             <Dropdown
                                 name="group"
-                                errors={formik.errors}
-                                touched={formik.touched}
-                                value={formik.values?.group}
-                                onBlur={formik.handleBlur}
+                                value={group}
+                                onChange={(e) => setGroup(e.value)}
                                 options={cities}
                                 optionLabel="name"
                                 editable placeholder="Select a City" className="wide" />

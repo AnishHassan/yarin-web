@@ -17,6 +17,7 @@ export const HeaderLogo = styled.img`
 width : 140px;
 height : 50px;
 margin-left : 4rem;
+cursor : pointer;
 `
 
 export const HeaderActions = styled.div`

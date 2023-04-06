@@ -4,14 +4,16 @@ import logo from '../../assests/images/ARAZIM.jpg'
 import LanguageSelectorComponent from '../LanguageSelector';
 import { Badge } from 'primereact/badge';
 import { Avatar } from 'primereact/avatar';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
 
     const [userName,] = useState('Yarin')
+    const navigate = useNavigate();
 
     return (
         <HeaderContainer>
-            <HeaderLogo src={logo} alt='ARAZIM-logo' />
+            <HeaderLogo src={logo} alt='ARAZIM-logo' onClick={() => (navigate('/'))} />
 
             <HeaderActions>
                 <HeaderLingoContainer>
