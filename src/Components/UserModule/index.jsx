@@ -20,7 +20,7 @@ const UserModule = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [detail, setDetail] = useState('');
-    const [price, setPrice] = useState('');
+    const [price, setPrice] = useState(0);
     const [city, setCity] = useState('');
     const [address, setAddress] = useState('');
     const [group, setGroup] = useState('');
@@ -60,8 +60,9 @@ const UserModule = () => {
                             <FieldLabel>Price</FieldLabel>
                             <div className="p-inputgroup flex-1">
                                 <span className="p-inputgroup-addon">$</span>
-                                <InputNumber placeholder="Price" name="price"
-                                    value={price} onChange={(e) => setPrice(e.target.value)}
+                                <InputNumber placeholder="Price"
+                                    value={Number(price) > 0 ? Number(price) : null}
+                                    onValueChange={(e) => setPrice(e.target.value)}
                                 />
                                 <span className="p-inputgroup-addon">.00</span>
                             </div>
